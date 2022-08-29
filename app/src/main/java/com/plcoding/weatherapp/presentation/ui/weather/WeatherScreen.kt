@@ -2,6 +2,8 @@ package com.plcoding.weatherapp.presentation.ui.weather
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -23,16 +25,19 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun WeatherScreen(
-    viewModel: WeatherViewModel = hiltViewModel()
+    viewModel: WeatherViewModel = hiltViewModel(),
+    viewModel16: Weather16DaysViewModel = hiltViewModel()
+
 ) {
     val state = viewModel.state.value
+    val state16Days = viewModel16.state.value
     val coroutineScope = rememberCoroutineScope()
-
+    val scrollState = rememberScrollState()
     val pagerState = rememberPagerState(
         initialPage = 0,
     )
     val currentTabIndex = pagerState.currentPage
-    val tabs = listOf("Today", "Tomorrow", "10 days")
+    val tabs = listOf("Today", "16 days")
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -78,15 +83,24 @@ fun WeatherScreen(
                 {
                     when (index) {
                         0 -> {
-                            WeatherCard(state = state, background = SecondaryBlueDeepDark)
-                            Spacer(modifier = Modifier.height(16.dp))
-                            WeatherForecast(state = state)
+                            Column(
+                                modifier = Modifier
+                                    .weight(1f, false)
+                                    .verticalScroll(scrollState)
+                            ) {
+                                WeatherCard(state = state, background = SecondaryBlueDeepDark)
+                                Spacer(modifier = Modifier.height(16.dp))
+                                WeatherForecast(state = state)
+                            }
                         }
-                        1 -> {}
-                        2 -> {}
+                        1 -> {
+                            Days16(
+                                state = state16Days,
+                                background = SecondaryBlueDeepDark
+                            )
+                        }
                     }
                 }
-
             }
         }
     }

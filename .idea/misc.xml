@@ -13,14 +13,17 @@
         <entry key="app/src/main/res/drawable/ic_rainy.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_rainythunder.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_snowy.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_snowyrainy.xml" value="0.1225" />
         <entry key="app/src/main/res/drawable/ic_splash.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_splash_.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_sunny.xml" value="0.1225" />
         <entry key="app/src/main/res/drawable/ic_sunnycloudy.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_sunnyrainy.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_thunder.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/ic_very_cloudy.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_wind.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_windy.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2245" />
       </map>
     </option>
   </component>
