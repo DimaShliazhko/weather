@@ -9,6 +9,7 @@ import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.plcoding.weatherapp.data.remote.FileApi
 import com.plcoding.weatherapp.data.remote.WeatherApi
 import com.plcoding.weatherapp.data.remote.WeatherDaysApi
 import com.plcoding.weatherapp.data.repository.MapRepositoryImpl
@@ -50,6 +51,16 @@ object AppModule {
     fun provideWeatherDaysApi(): WeatherDaysApi {
         return Retrofit.Builder()
             .baseUrl("https://api.weatherbit.io/")
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideFileApi(): FileApi {
+        return Retrofit.Builder()
+            .baseUrl("https://www.prorobot.ru")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()

@@ -30,6 +30,7 @@ fun Toolbar(
             modifier = modifier
                 .fillMaxWidth()
                 .background(SecondaryBlueDeepDark),
+            verticalArrangement = Arrangement.Center
         ) {
             var text by remember { mutableStateOf("") }
             var hint by remember { mutableStateOf("Search...") }
@@ -38,7 +39,8 @@ fun Toolbar(
             Box(
                 modifier = modifier
                     .padding(10.dp)
-                    .clip(RoundedCornerShape(5.dp))
+                    .clip(RoundedCornerShape(5.dp)),
+                contentAlignment = Alignment.Center
             ) {
                 BasicTextField(
                     value = text,
