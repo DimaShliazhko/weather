@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,6 +17,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plcoding.weatherapp.R
+import com.plcoding.weatherapp.presentation.ui.spacing
 import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 
@@ -46,20 +48,20 @@ fun WeatherCard(
                     modifier = modifier.align(Alignment.End),
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
                 Image(
                     painter = painterResource(id = date.weatherType.iconRes),
                     contentDescription = null,
                     modifier = Modifier.width(200.dp)
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
                 Text(
                     text = "${date.temperatureCelsius} °C",
                     fontSize = 50.sp,
                     color = Color.White
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
                 Text(
                     text = "${date.weatherType.weatherDesc} ",
                     fontSize = 20.sp,

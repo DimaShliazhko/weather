@@ -18,6 +18,8 @@ import com.google.accompanist.pager.rememberPagerState
 import com.plcoding.weatherapp.presentation.InternetConnection
 import com.plcoding.weatherapp.presentation.NoPermissonView
 import com.plcoding.weatherapp.presentation.Toolbar
+import com.plcoding.weatherapp.presentation.ui.LocalSpacing
+import com.plcoding.weatherapp.presentation.ui.spacing
 import com.plcoding.weatherapp.presentation.ui.theme.PrimaryBlueDark
 import com.plcoding.weatherapp.presentation.ui.theme.SecondaryBlueDeepDark
 import kotlinx.coroutines.launch
@@ -89,7 +91,7 @@ fun WeatherScreen(
                                     .verticalScroll(scrollState)
                             ) {
                                 WeatherCard(state = state, background = SecondaryBlueDeepDark)
-                                Spacer(modifier = Modifier.height(16.dp))
+                                Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
                                 WeatherForecast(state = state)
                             }
                         }

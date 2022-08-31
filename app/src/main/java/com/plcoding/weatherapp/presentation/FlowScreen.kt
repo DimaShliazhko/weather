@@ -3,10 +3,7 @@ package com.plcoding.weatherapp.presentation
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.plcoding.weatherapp.presentation.ui.NavigationScreens
+import com.plcoding.weatherapp.presentation.ui.spacing
 import com.plcoding.weatherapp.presentation.ui.theme.PrimaryBlueDark
 
 @Composable
@@ -34,7 +32,7 @@ fun FlowScreen(
             ) {
                 Text(text = "Show notification")
             }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
 
             TextField(
                 value = text, onValueChange = { text = it },

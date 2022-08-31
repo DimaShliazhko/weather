@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Checkbox
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
@@ -23,6 +24,7 @@ import coil.compose.rememberImagePainter
 import com.plcoding.weatherapp.data.repository.ColorFilterWorker
 import com.plcoding.weatherapp.data.repository.DownloadWorker
 import com.plcoding.weatherapp.data.repository.WorkerParams
+import com.plcoding.weatherapp.presentation.ui.spacing
 import com.plcoding.weatherapp.presentation.ui.theme.PrimaryBlueDark
 
 @Composable
@@ -75,7 +77,7 @@ fun ThirdScreen(
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth()
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
         }
         Button(
                      onClick = {
@@ -92,7 +94,7 @@ fun ThirdScreen(
             Text(text = "Start Download")
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
         when (downloadInfo?.state) {
             WorkInfo.State.RUNNING -> Text(text = "Downloading...")
             WorkInfo.State.SUCCEEDED -> Text(text = "Downloading SUCCEEDED...")
@@ -100,16 +102,17 @@ fun ThirdScreen(
             WorkInfo.State.CANCELLED -> Text(text = "Downloading CANCELLED...")
             WorkInfo.State.BLOCKED -> Text(text = "Downloading BLOCKED...")
 
+            else -> Unit
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
         when (filterInfo?.state) {
             WorkInfo.State.RUNNING -> Text(text = "Applying filter...")
             WorkInfo.State.SUCCEEDED -> Text(text = "Applying filter SUCCEEDED...")
             WorkInfo.State.FAILED -> Text(text = "Applying filter FAILED...")
             WorkInfo.State.CANCELLED -> Text(text = "Applying filter CANCELLED...")
             WorkInfo.State.BLOCKED -> Text(text = "Applying filter BLOCKED...")
-
+            else -> Unit
         }
     }
 }
