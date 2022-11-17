@@ -7,18 +7,18 @@ import androidx.compose.material.Button
 import androidx.compose.material.Checkbox
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.work.*
 import coil.compose.rememberImagePainter
 import com.plcoding.weatherapp.data.repository.ColorFilterWorker
@@ -26,12 +26,16 @@ import com.plcoding.weatherapp.data.repository.DownloadWorker
 import com.plcoding.weatherapp.data.repository.WorkerParams
 import com.plcoding.weatherapp.presentation.ui.spacing
 import com.plcoding.weatherapp.presentation.ui.theme.PrimaryBlueDark
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun ThirdScreen(
+    thirdViewModel: ThirdViewModel = hiltViewModel(),
     modifier: Modifier = Modifier.background(PrimaryBlueDark)
 ) {
     val context = LocalContext.current
+
+    var count by remember { mutableStateOf(0) }
     val downloadRequest = OneTimeWorkRequestBuilder<DownloadWorker>()
         .setConstraints(
             Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
@@ -63,6 +67,12 @@ fun ThirdScreen(
         filterUri ?: downloadUri
     }
 
+    LaunchedEffect(key1 = true) {
+        thirdViewModel.channel.collect { item ->
+            count = item
+        }
+    }
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -80,7 +90,7 @@ fun ThirdScreen(
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
         }
         Button(
-                     onClick = {
+            onClick = {
                 workManager.beginUniqueWork(
                     "download",
                     ExistingWorkPolicy.KEEP,
@@ -93,6 +103,13 @@ fun ThirdScreen(
         ) {
             Text(text = "Start Download")
         }
+        Text(text = "Count")
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = count.toString(),
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
 
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
         when (downloadInfo?.state) {

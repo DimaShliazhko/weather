@@ -161,9 +161,9 @@ fun WeatherForecast(
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
 
             LazyRow(content = {
-                items(data) { wetherDate ->
+                items(data) { weatherDate ->
                     HourWeatherDisplay(
-                        weatherData = wetherDate,
+                        weatherData = weatherDate,
                         modifier = Modifier
                             .height(100.dp)
                             .padding(horizontal = 16.dp)

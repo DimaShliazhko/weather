@@ -5,6 +5,7 @@ sealed class NavigationScreens(val route: String) {
     object NotificationScreen : NavigationScreens("map_screen")
     object SettingScreen : NavigationScreens("setting_screen")
     object DetailScreen : NavigationScreens("detail_screen")
+    object ServiceScreen : NavigationScreens("service_screen")
 
     fun withArgs(vararg args: String): String {
         return  buildString {

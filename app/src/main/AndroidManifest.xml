@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <receiver android:name=".features.CounterNotificationReceiver" />
-
+        <service android:name=".features.MyService" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCY57b_zwXMoOU8R6YTVhtc8zgLhjNHXPI" />

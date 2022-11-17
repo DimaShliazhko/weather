@@ -23,7 +23,13 @@ fun Navigation(
         }
         composable(NavigationScreens.SettingScreen.route) {
             FlowScreen(navController = navController)
+            //ThirdScreen()
         }
+        composable(NavigationScreens.ServiceScreen.route) {
+            ServiceScreen()
+            //ThirdScreen()
+        }
+
 
         composable(
             route = NavigationScreens.DetailScreen.route +"/{name}",
